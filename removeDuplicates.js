@@ -8,7 +8,7 @@
  */
 var removeDuplicates = function(nums) {
     // loop through
-    for (let i = 0; i < nums.length - 1; i++) {
+    for (let i = 0; i < nums.length; i++) {
         const currNum = nums[i]
         for (let j = i + 1; j < nums.length; j++) {
             const nextNum = nums[j]
@@ -16,6 +16,7 @@ var removeDuplicates = function(nums) {
             if (currNum === nextNum) {
                 // splice next num out
                 nums.splice(j,1)
+                j -= 1
             }
         }
     }
