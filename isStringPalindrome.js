@@ -30,3 +30,9 @@ var isPalindrome = function(s) {
     }
     return palindrome
   };
+
+  // optimised solution from leetCode
+//   var isPalindrome = function(s) {
+//     s = s.replace(/\W+/g, "").toLowerCase();
+//     return s === s.split("").reverse().join("");
+// };
