@@ -31,27 +31,20 @@ var singleNumber = function(nums) {
       return nums[0]
     }
     const stack = []
-    const repeats = []
     for (let i = 0; i < nums.length; i++) {
-      let j = i
-      while (j < nums.length && stack.length === 0) {
-        j++
-        if (!repeats.includes(nums[i])) {
-          stack.push(nums[i])
+        stack.push(nums[i])
+        // console.log('pushing on ',nums[i])
+      for (let j = 0; j < nums.length; j++) {
+        if (i !== j){
           if (nums[i] === nums[j]) {
-            repeats.push(nums[i])
-            console.log(stack, 'stack')
+            // console.log('gonna pop', stack.pop(), ' off')
             stack.pop()
-            console.log(stack, 'stack')
-            console.log('found a match')
           }
           else if (j === nums.length - 1 && stack.length === 1) {
-            console.log('no matches')
-            console.log(stack)
+            // console.log('----------')
             return stack
-          } 
+          }
         }
-        
       }
     }
     return stack[0]
