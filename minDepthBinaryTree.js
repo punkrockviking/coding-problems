@@ -28,38 +28,36 @@ class Node {
   }
 }
 
-const traverse = function(node, depth=0, minDepth) {
+// WONT PASS ON LEETCODE, DEPTH MUST END ON A LEAF NODE IF THERE ARE ANY LEAF NODES
+
+const traverse = function(node, depthArr, depth=1) {
   console.log('*************************************************')
   let currDepth = depth 
-  if (minDepth && currDepth < minDepth) {
-      minDepth = currDepth
-      console.log('minDepth is ', minDepth)
+  if (!node) {
+    if (currDepth !== depthArr[depthArr.length - 1]) {
+      depthArr.push(currDepth - 1)
+      console.log(`end of the line! depth = `, currDepth)
+      console.log(depthArr)
     }
-  //WTF do i establish the minDepth? i think i have to pass it down recursively
-  // is there a left?
-  if (node.left) {
-    // call again with depth + 1
-    console.log('There is a left at ', node.value)
-    traverse(node.left, currDepth + 1)
+    return depthArr
   }
-  // is there a right?
-  if (node.right) {
-    // call again with depth + 1
-    console.log('There is a right at ', node.value)
-    traverse(node.right, currDepth + 1)
-  }
-  if (!node.left && !node.right) {
-    // add one to depth and return depth
-    currDepth += 1
-    console.log(`end of the line at ${node.value}! depth = `, currDepth)
-    traverse(node, currDepth, minDepth)
-  }
+  console.log('There is a left at ', node.value)
+  traverse(node.left, depthArr, currDepth + 1)
+  console.log('There is a right at ', node.value)
+  traverse(node.right, depthArr, currDepth + 1)
   console.log('---------------------------------------------')
-  return minDepth
+  return depthArr
 }
 
 const minDepth = function(root) {
-  
+  // call helper function
+  const depths = traverse(root, [])
+  // sort array
+  const sortedDepths = depths.sort((a,b) => {
+    return depths[a] - depths[b]
+  })
+  console.log(sortedDepths)
+  return sortedDepths[0]
 };
 
 const a = new Node(3)
@@ -73,4 +71,4 @@ c.left = d
 c.right = e
 
 
-traverse(a)
+minDepth(a)
