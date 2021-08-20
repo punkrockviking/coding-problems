@@ -28,24 +28,25 @@ class Node {
   }
 }
 
-// WONT PASS ON LEETCODE, DEPTH MUST END ON A LEAF NODE IF THERE ARE ANY LEAF NODES
-
 const traverse = function(node, depthArr, depth=1) {
   console.log('*************************************************')
   let currDepth = depth 
   if (!node) {
-    if (currDepth !== depthArr[depthArr.length - 1]) {
-      depthArr.push(currDepth - 1)
-      console.log(`end of the line! depth = `, currDepth)
-      console.log(depthArr)
-    }
+    return
+  }
+  if (!node.left && !node.right) {
+    // if (currDepth !== depthArr[depthArr.length - 1]) {
+    depthArr.push(currDepth)
+    // console.log(`end of the line! depth = `, currDepth)
+    // console.log(depthArr)
+    // }
     return depthArr
   }
-  console.log('There is a left at ', node.value)
+  // console.log('There is a left at ', node.value)
   traverse(node.left, depthArr, currDepth + 1)
-  console.log('There is a right at ', node.value)
+  // console.log('There is a right at ', node.value)
   traverse(node.right, depthArr, currDepth + 1)
-  console.log('---------------------------------------------')
+  // console.log('---------------------------------------------')
   return depthArr
 }
 
@@ -53,10 +54,13 @@ const minDepth = function(root) {
   // call helper function
   const depths = traverse(root, [])
   // sort array
+  if (!root) {
+    return 0
+  }
   const sortedDepths = depths.sort((a,b) => {
-    return depths[a] - depths[b]
+    return a - b
   })
-  console.log(sortedDepths)
+  // console.log(sortedDepths)
   return sortedDepths[0]
 };
 
@@ -69,6 +73,17 @@ a.left = b
 a.right = c
 c.left = d
 c.right = e
+const f = new Node(1)
+const g = new Node(2)
+const h = new Node(3)
+const k = new Node(4)
+const l = new Node(5)
+f.left = g
+f.right = h
+g.left = k
+g.right = l
 
 
-minDepth(a)
+
+// minDepth(a)
+minDepth(f)
