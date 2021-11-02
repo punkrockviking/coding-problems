@@ -24,5 +24,10 @@ You may assume the two numbers do not contain any leading zero, except the numbe
 
  
  const addTwoNumbers = function(l1, l2) {
-    
+  // establish curr, prev, and next nodes for each list
+  // establish summed linked list
+  // while curr.val of both lists
+  // add numbers together
+  // if >= 10 only use the single digit and add 1 to one of the .next numbers
+  // return summed list
 };
