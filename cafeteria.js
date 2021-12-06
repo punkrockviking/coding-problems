@@ -19,6 +19,22 @@ Three additional diners may sit at seats 44, 88, and 1010 without violating the 
 In the second case, only 11 additional diner is able to join the table, by sitting in any of the first 33 seats.
 */
 
+
+/**
+ * @param {number} N
+ * @param {number} K
+ * @param {number} M
+ * @param {number[]} S
+ * @return {number}
+ */
+
+/**
+ * @param {number} N
+ * @param {number} K
+ * @param {number} M
+ * @param {number[]} S
+ * @return {number}
+ */
 function getMaxAdditionalDinersCount(N, K, M, S) {
   // redefine variable names to easily understand which value is what
   const isAvailable = (currSeat, nextSeatedPerson) => {
