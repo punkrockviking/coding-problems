@@ -22,19 +22,38 @@ list2b.next = list2c
 
 
 const addTwoNumbers = function(l1, l2) {
-  // establish curr, prev, and next nodes for each list
+  // establish the 2 nodes
   let cur1 = l1
-  let prev1 = null
   let cur2 = l2
-  let prev2 = null
-  // establish summed linked list
-  let sumNode = new ListNode()
-  let head = sumNode
-  // while curr.val of both lists
+  // establish 3rd node (the list i return at the end)
+  let currNode = new ListNode()
+  let prevNode = null
+  let headNode = currNode
+  let carryNum = 0
   while (cur1 && cur2) {
-    // add numbers together
-    sumNode.val = cur1.val + cur2.val
-    // if >= 10 only use the single digit and add 1 to one of the .next numbers 
+    // start at first node and get sum of the two nodes
+    let nodeSum = cur1.val + cur2.val + carryNum
+    carryNum = 0
+    // if > 10, only use first digit and carry the 1 to the next node set
+    if (nodeSum >= 10) {
+      // carries the 1 using flag
+      carryNum = 1
+    }
+    nodeSum = nodeSum % 10
+    const tailNode = new ListNode(nodeSum)
+    // got lost here
+    // need to do: 
+      // build upon the headNode using the prevNode and/or currNode 
+    currNode.val = tailNode.val // dont use this
+    // move on to next node
+    cur1 = cur1.next
+    cur2 = cur2.next
+    prevNode = currNode // what am i trying to do here?
+    
+    // if one list ends and there is still another, carry any 1's and iterate through rest of list
+    
+
   }
+
   // return summed list
 };
