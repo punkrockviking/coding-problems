@@ -30,26 +30,32 @@ const nums1 = [-2,1,-3,4,-1,2,1,-5,4]
 const nums2 = [5,4,-1,7,8]
 const nums3 = [1]
 
-const maxSubArray = function(nums) {
-  let currSum
-  let maxSum 
-  // iterate through
+// NEED TO FIX SOLUTION TO WORK FOR MAXSUM UNDER 0
+
+const maxSubArray = (nums) => {
+  let currSum = null
+  let maxSum = null
+  // iterate through nums array
   for (let i = 0; i < nums.length; i++) {
-    if (i = 0) {
-      currSum = nums[i]
-      maxSum = currSum
+    const num = nums[i]
+    // console.log('num is', num)
+    if (i === 0) {
+    // console.log('first time around, maxSum is equal to ', num)
+    maxSum = num
     }
-    // add to currSum
-    currSum += nums[i]
-    // if current num brings currSum to <= 0 
-    if (currSum <= 0) {
+    if (num < 0 && Math.abs(num) >= currSum) {
+      // console.log('big negative. resetting currSum to null')
+      currSum = null
+    } else {
+      // add to currSum
+      currSum += num
+      // console.log('adding', num, 'so currSum is now ', currSum)
       // check currSum vs maxSum
-      currSum -= nums[i]
-      maxSum = maxSum > currSum ? maxSum : currSum
+      maxSum = maxSum >= currSum ? maxSum : currSum
+      // console.log('comparing maxSum to currSum. maxSum is ', maxSum)
     }
   }
-  maxSum = maxSum > currSum ? maxSum : currSum
   return maxSum
 };
 
-maxSubArray(nums1)
+maxSubArray([-1])
