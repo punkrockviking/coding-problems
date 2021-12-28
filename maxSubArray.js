@@ -26,36 +26,30 @@ Constraints:
 
 */
 
-const nums1 = [-2,1,-3,4,-1,2,1,-5,4]
-const nums2 = [5,4,-1,7,8]
+const nums1 = [-2, 1, -3, 4, -1, 2, 1, -5, 4]
+const nums2 = [5, 4, -1, 7, 8]
 const nums3 = [1]
+const nums4 = [-2, -1]
+
 
 // NEED TO FIX SOLUTION TO WORK FOR MAXSUM UNDER 0
 
 const maxSubArray = (nums) => {
-  let currSum = null
-  let maxSum = null
+  let currSum = -Infinity
+  let maxSum = -Infinity
   // iterate through nums array
   for (let i = 0; i < nums.length; i++) {
     const num = nums[i]
-    // console.log('num is', num)
-    if (i === 0) {
-    // console.log('first time around, maxSum is equal to ', num)
-    maxSum = num
-    }
-    if (num < 0 && Math.abs(num) >= currSum) {
-      // console.log('big negative. resetting currSum to null')
-      currSum = null
-    } else {
-      // add to currSum
-      currSum += num
-      // console.log('adding', num, 'so currSum is now ', currSum)
-      // check currSum vs maxSum
-      maxSum = maxSum >= currSum ? maxSum : currSum
-      // console.log('comparing maxSum to currSum. maxSum is ', maxSum)
-    }
+    // is currSum negative?
+    currSum = Math.max(0, currSum)
+    // add to currSum
+    currSum += num
+    console.log('adding', num, 'so currSum is now ', currSum)
+    // check currSum vs maxSum
+    console.log('comparing maxSum to currSum. maxSum is ', maxSum)
+    maxSum = Math.max(maxSum, currSum)
   }
   return maxSum
 };
 
-maxSubArray([-1])
+maxSubArray(nums4)
