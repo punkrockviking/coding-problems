@@ -27,8 +27,17 @@ const searchRange = function(nums, target) {
   if (target < nums[0] || target > nums[nums.length -1]) {
     return [-1, -1]
   }
+  if (nums.length === 1 && nums[0] === target) {
+    return [0,0]
+  }
+  // console.log('lowerbound')
+  const lowerbound = findIndex(nums, 0, nums.length - 1, target, true)
+  // console.log('upperbound')
+  const upperbound = findIndex(nums, 0, nums.length - 1, target, false)
+
+  return [lowerbound, upperbound]
+
   // start at middle of array
-  // is middle > target? 
   const middle = Math.floor(nums.length / 2)
   if (target > nums[middle]) {
     const topHalf = nums.slice(middle)
@@ -39,8 +48,42 @@ const searchRange = function(nums, target) {
     return searchRange(bottomHalf, target)
   }
   // if index equals target
-  const range = [-1,-1]
-    // check to left and right til it doesnt equal index
-};
+  // if i return indexes of the range, it will be the indexes of whatever arr I make my argument at the level where it is true, not necessarily the indexes of the original arr argument. How should i approach this? What exactly do i need the function to return? consider making the recursive part a helper function so that I can use that returned value to create my ultimate output for the problem.
+  // check to left and right til it doesnt equal index
 
-let arr1 = [1,1,2,2,2,3,3,3,,4,4,4,5]
+};;
+
+const findIndex = function(nums, startIndex, endIndex, target, isLower, isFound=false) {
+  // console.log(startIndex, endIndex, target)
+  if (startIndex >= endIndex) {
+    // rounding up when we cut in half
+    // console.log('+++++++++++++++++++++')
+    // console.log(isFound, target, nums[endIndex])
+    if (isFound) {
+      return target === nums[endIndex] ? endIndex : endIndex - 1
+    }
+    return -1
+  }
+  
+  const middleIndex = isLower ? Math.floor((startIndex + endIndex)/2) : Math.ceil((startIndex + endIndex)/2)
+  // console.log(middleIndex)
+  // middle === target
+  if (nums[middleIndex] === target) {
+    isFound = true
+    return isLower ? findIndex(nums, startIndex, middleIndex - 1, target, isLower, isFound) : findIndex(nums, middleIndex + 1, endIndex, target, isLower, isFound)
+  }
+  // middle > target
+  if (nums[middleIndex] > target) {
+    return findIndex(nums, startIndex, middleIndex - 1, target, isLower, isFound)
+  }
+  // middle < target
+  if (nums[middleIndex] < target) {
+    return findIndex(nums, middleIndex + 1, endIndex, target, isLower, isFound)
+  }
+
+}
+
+
+let arr1 = [1,1,2,2,2,3,3,3,4,4,4,4,4,4,5]
+
+searchRange(arr1, 4)
