@@ -23,6 +23,28 @@ Notice that you may not slant the container.
 const testHeights = [1,8,6,2,5,4,8,3,7]
 const expectedValue = 49
 
+function maxArea(heights) {
+  let biggestArea = 0
+  let leftIndex = 0
+  let rightIndex = heights.length - 1
+  while (leftIndex < rightIndex) {
+    const leftHeight = heights[leftIndex]
+    const rightHeight = heights[rightIndex]
+    const limitingHeight = Math.min(leftHeight, rightHeight)
+    const currArea = limitingHeight * (rightIndex - leftIndex)
+    biggestArea = Math.max(biggestArea, currArea)
+
+    if (leftHeight < rightHeight) {
+      leftIndex ++
+    } else {
+      rightIndex --
+    }
+  }
+  return biggestArea
+}
+maxArea(testHeights)
+
+
 // function maxArea(heights) {
 //   let maxAreaBox = 0
 //   for (let i = 0; i < heights.length; i++) {
@@ -42,5 +64,3 @@ const expectedValue = 49
 //   }
 //   return maxAreaBox
 // };
-
-maxArea(testHeights)
