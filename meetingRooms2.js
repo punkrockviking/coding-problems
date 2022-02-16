@@ -14,11 +14,7 @@ Input: intervals = [[7,10],[2,4]]
 Output: 1
 */
 
-// sort by startpoints
-// sort by endpoints
-// compare start of startpoints to end of endpoints
-// if < add to rooms otherwise advance down endpoints
-// advance on startpoints
+
 
 const minMeetingRooms = (intervals) => {
   let rooms = 0
@@ -30,9 +26,9 @@ const minMeetingRooms = (intervals) => {
   // console.log(ends)
   let j = 0
   for (let i = 0; i < starts.length; i++) {
-    const smallestStart = starts[i][0]
-    const smallestEnd = ends[j][1]
-    if (smallestStart < smallestEnd) {
+    const smallestRemainingStart = starts[i][0]
+    const smallestRemainingEnd = ends[j][1]
+    if (smallestRemainingStart < smallestRemainingEnd) {
       rooms ++
     } else {
       j++
