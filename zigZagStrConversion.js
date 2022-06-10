@@ -1,9 +1,37 @@
 /*
 The string "PAYPALISHIRING" is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)
+2
+P Y A I H R N 2
+A P L S I I G 2
 
-P   A   H   N
-A P L S I I G
-Y   I   R
+3
+P   A   H   N 4
+A P L S I I G 2
+Y   I   R     4
+
+4
+P     I    N 6 6
+A   L S  I G 4 2
+Y A   H R    2 4
+P     I      6 6
+
+5 
+P       H     8  8
+A     S I     6  2
+Y   I   R     4  4
+P L     I G   2  6
+A       N     8  8
+
+6
+P         R 10  10
+A       I I  8  2
+Y     H   N  6  4
+P   S     G  4  6
+A I          2  8
+L           10  10
+
+FULL ROUND IS (numRows - 1) * 2
+
 And then read line by line: "PAHNAPLSIIGYIR"
 
 Write the code that will take a string and make this conversion given a number of rows:
@@ -20,10 +48,10 @@ Example 2:
 Input: s = "PAYPALISHIRING", numRows = 4
 Output: "PINALSIGYAHRPI"
 Explanation:
-P     I    N
-A   L S  I G
-Y A   H R
-P     I
+P     I    N 6
+A   L S  I G 4
+Y A   H R    4
+P     I      6
 Example 3:
 
 Input: s = "A", numRows = 1
