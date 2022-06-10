@@ -66,51 +66,64 @@ s consists of English letters (lower-case and upper-case), ',' and '.'.
 */
 
 const convert = function(str, numRows) {
-  // create matrix of arrays numRows long
-  const matrix = []
-  const createMatrix = (num) => {
-    for (let i = 1; i <= num; i++) {
-      matrix.push([])
-    }
-  }
+  // establish core variables
 
-  let shouldCountUp = false
-  let curRowIndex = 0
+  // iterate once through first numRows spots
+
+  // use pattern (numRows - 1) * 2, then 2 less etc.
+
+  // add letter at those spots to diagStr
+
+  // 
   
-  
-  createMatrix(numRows)
-  // console.log(matrix)
-  // loop through string pushing each letter onto matrix in zigzag order
-  for (let i = 0; i < str.length; i++) {
-    // const isFirstRow = curRowIndex === 0
-    // const isLastRow = curRowIndex === numRows - 1
-    // switch diag direction when at the top or bottom collumn
-    // console.log('curRowIndex is', curRowIndex)
-    if ((curRowIndex === 0) || (curRowIndex === numRows - 1)) {
-      shouldCountUp = !shouldCountUp
-      // console.log('flipping count direction!!!!!')
-    }
-    // console.log('shouldCountUp is', shouldCountUp)
-    // push letter into matrix
-    matrix[curRowIndex].push(str[i])
-    // curRowIndex = shouldCountUp ? curRowIndex + 1 : curRowIndex - 1
-    if (shouldCountUp) {
-      curRowIndex ++
-    } else {
-      curRowIndex --
-    }
-  }
-  // console.log(matrix)
-  // join arrays and concat to new string in order
-  let diagStr = ''
-  for (let i = 0; i < matrix.length; i++) {
-    for (let j = 0; j < matrix[i].length; j++) {
-      diagStr = diagStr.concat(matrix[i][j])
-    }
-  }
   return diagStr
 };
 
+// const convert = function(str, numRows) {
+//   // create matrix of arrays numRows long
+//   const matrix = []
+//   const createMatrix = (num) => {
+//     for (let i = 1; i <= num; i++) {
+//       matrix.push([])
+//     }
+//   }
+
+//   let shouldCountUp = false
+//   let curRowIndex = 0
+  
+  
+//   createMatrix(numRows)
+//   // console.log(matrix)
+//   // loop through string pushing each letter onto matrix in zigzag order
+//   for (let i = 0; i < str.length; i++) {
+//     // const isFirstRow = curRowIndex === 0
+//     // const isLastRow = curRowIndex === numRows - 1
+//     // switch diag direction when at the top or bottom collumn
+//     // console.log('curRowIndex is', curRowIndex)
+//     if ((curRowIndex === 0) || (curRowIndex === numRows - 1)) {
+//       shouldCountUp = !shouldCountUp
+//       // console.log('flipping count direction!!!!!')
+//     }
+//     // console.log('shouldCountUp is', shouldCountUp)
+//     // push letter into matrix
+//     matrix[curRowIndex].push(str[i])
+//     // curRowIndex = shouldCountUp ? curRowIndex + 1 : curRowIndex - 1
+//     if (shouldCountUp) {
+//       curRowIndex ++
+//     } else {
+//       curRowIndex --
+//     }
+//   }
+//   // console.log(matrix)
+//   // join arrays and concat to new string in order
+//   let diagStr = ''
+//   for (let i = 0; i < matrix.length; i++) {
+//     for (let j = 0; j < matrix[i].length; j++) {
+//       diagStr = diagStr.concat(matrix[i][j])
+//     }
+//   }
+//   return diagStr
+// };
 
 const s1 = 'PAYPALISHIRING'
 const num1 = 4
