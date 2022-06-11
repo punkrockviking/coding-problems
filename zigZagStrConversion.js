@@ -67,8 +67,14 @@ s consists of English letters (lower-case and upper-case), ',' and '.'.
 
 const convert = function(str, numRows) {
   // establish core variables
-
+  let diagStr = ''
   // iterate once through first numRows spots
+  for (let i = 0; i < numRows; i++) {
+    diagStr = diagStr.concat(str[i])
+    if (i = 0 || i = numRows - 1) {
+      
+    }
+  }
 
   // use pattern (numRows - 1) * 2, then 2 less etc.
 
