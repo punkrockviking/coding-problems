@@ -68,20 +68,29 @@ s consists of English letters (lower-case and upper-case), ',' and '.'.
 const convert = function(str, numRows) {
   // establish core variables
   let diagStr = ''
+  const maxIncreaseNum = (numRows - 1) * 2
+  let patternIncreaseNum = ((numRows - 1) * 2) - 2
   // iterate once through first numRows spots
   for (let i = 0; i < numRows; i++) {
-    diagStr = diagStr.concat(str[i])
-    if (i = 0 || i = numRows - 1) {
-      
+    let curIndex = i
+    const firstOrLast = (i === 0 || i === numRows - 1)
+    while (str[curIndex]) {
+      // add to diagStr
+      diagStr = diagStr.concat(str[curIndex])
+      // console.log('diagStr is', diagStr)
+      // find where on pattern the index lies
+      if (firstOrLast) {
+        // increase index by pattern
+        curIndex += maxIncreaseNum
+      } else {
+        // console.log('else statement -------')
+        curIndex += patternIncreaseNum
+        patternIncreaseNum = maxIncreaseNum - patternIncreaseNum
+      }
+      // end while loop 
     }
+    // end for loop
   }
-
-  // use pattern (numRows - 1) * 2, then 2 less etc.
-
-  // add letter at those spots to diagStr
-
-  // 
-  
   return diagStr
 };
 
@@ -134,3 +143,7 @@ const convert = function(str, numRows) {
 const s1 = 'PAYPALISHIRING'
 const num1 = 4
 console.log(convert(s1, num1))
+
+const s2 = 'A'
+const num2 = 1
+console.log(convert(s2, num1))
