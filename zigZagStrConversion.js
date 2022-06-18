@@ -67,19 +67,23 @@ s consists of English letters (lower-case and upper-case), ',' and '.'.
 
 const convert = function(str, numRows) {
   // establish core variables
-  let diagStr = ''
+  const letters = str.split('')
+  const diagArr = []
   const maxIncreaseNum = (numRows - 1) * 2
-  let patternIncreaseNum = ((numRows - 1) * 2) - 2
+  const findIncrease = (num) => {
+    return num * 2
+  }
   // iterate once through first numRows spots
   for (let i = 0; i < numRows; i++) {
     let curIndex = i
-    const firstOrLast = (i === 0 || i === numRows - 1)
-    while (str[curIndex]) {
-      // add to diagStr
-      diagStr = diagStr.concat(str[curIndex])
-      // console.log('diagStr is', diagStr)
+    // const firstOrLast = (i === 0 || i === numRows - 1)
+    let patternIncreaseNum = maxIncreaseNum - findIncrease(i)
+    while (letters[curIndex]) {
+      // add to diagArr
+      diagArr.push(letters[curIndex])
+      // console.log('diagArr is', diagArr)
       // find where on pattern the index lies
-      if (firstOrLast) {
+      if (i === 0 || i === numRows - 1) {
         // increase index by pattern
         curIndex += maxIncreaseNum
       } else {
@@ -87,11 +91,11 @@ const convert = function(str, numRows) {
         curIndex += patternIncreaseNum
         patternIncreaseNum = maxIncreaseNum - patternIncreaseNum
       }
-      // end while loop 
+      // end while loop
     }
     // end for loop
   }
-  return diagStr
+  return diagArr.join('')
 };
 
 // const convert = function(str, numRows) {
