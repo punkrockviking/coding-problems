@@ -41,11 +41,30 @@ Follow up: Could you solve it both recursively and iteratively?
  */
 
 function TreeNode(val, left, right) {
-  this.val = (val===undefined ? 0 : val)
-  this.left = (left===undefined ? null : left)
-  this.right = (right===undefined ? null : right)
+	this.val = val === undefined ? 0 : val;
+	this.left = left === undefined ? null : left;
+	this.right = right === undefined ? null : right;
 }
 
-var isSymmetric = function(root) {
-  
+const isSymmetric = function(root) {
+	const compare = (leftNode, rightNode) => {
+		if (!leftNode && !rightNode) {
+			return true;
+		}
+		if (!leftNode || !rightNode) {
+			return false;
+		}
+		if (leftNode.val !== rightNode.val) {
+			return false;
+		}
+		return (
+			compare(leftNode.left, rightNode.right) &&
+			compare(leftNode.right, rightNode.left)
+		);
+	};
+
+	let curLeftNode = root.left;
+	let curRightNode = root.right;
+
+	return compare(curLeftNode, curRightNode);
 };
