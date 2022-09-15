@@ -46,7 +46,7 @@ function TreeNode(val, left, right) {
 	this.right = right === undefined ? null : right;
 }
 
-const isSymmetric = function(root) {
+const isSymmetricRecursive = function(root) {
 	const compare = (leftNode, rightNode) => {
 		if (!leftNode && !rightNode) {
 			return true;
@@ -65,6 +65,13 @@ const isSymmetric = function(root) {
 
 	let curLeftNode = root.left;
 	let curRightNode = root.right;
+
+	return compare(curLeftNode, curRightNode);
+};
+
+
+const isSymmetricIterative = function(root) {
+
 
 	return compare(curLeftNode, curRightNode);
 };
