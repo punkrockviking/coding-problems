@@ -70,8 +70,30 @@ const isSymmetricRecursive = function(root) {
 };
 
 
-const isSymmetricIterative = function(root) {
+const isSymmetricItterative = function(root) {
+  // define current left and right nodes
+  // left goes down left first
+  // right goes down right first 
+  // compare left to right
+  // let curLeftNode = root
+  // let curRightNode = root
+  // let prevLeftNode = root
+  // let prevRightNode = root
+  let curNode = root
+  let prevNode = root
+  
+  while (curNode) {
+    if (curNode.left) {
+      curNode = curNode.left
+    } else if (curNode.right) {
+      curNode = curNode.right
+    } else {
+      
+    }
 
+    prevNode = curnode
+  }
 
-	return compare(curLeftNode, curRightNode);
+  return true
+
 };
