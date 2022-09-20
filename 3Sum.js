@@ -43,13 +43,32 @@ Constraints:
 const threeSum = function(nums) {
   // sort array
   const sortedNums = nums.sort((a, b) => a - b)
+  const sum = (a, b, c) => {
+    return nums[a] + nums[b] + nums[c] === 0
+  }
   console.log(sortedNums)
   // left and right pointer - left must be < right
   const triplets = []
-  let left = nums[0]
-  let right = nums[nums.length -1]
-  while (left < right) {
+  let leftIndex = 0
+  let rightIndex = nums.length -1
+  while (leftIndex < rightIndex - 1) {
+    let midIndex = Math.floor((leftIndex + rightIndex) / 2)
     
+    while (midIndex > leftIndex && midIndex < rightIndex) {
+      if (sum(leftIndex, midIndex, rightIndex) === 0) {
+        triplets.push([nums[leftIndex], nums[midIndex], nums[rightIndex]])
+        console.log('pushing to triplets array!')
+        console.log(triplets)
+      }
+      else if (sum(leftIndex, midIndex, rightIndex) < 0) {
+        // move middle right
+        midIndex ++
+      } else {
+        // move middle left
+        midIndex --
+      }
+      
+    }
   }
   // sum of left, center, and right
   // if sum 0 push array of triplets to array
@@ -57,4 +76,5 @@ const threeSum = function(nums) {
   // 
 };
 
-threeSum([-1,0,1,2,-1,-4])
+// threeSum([-1,0,1,2,-1,-4])
+threeSum([-1,0,1])
