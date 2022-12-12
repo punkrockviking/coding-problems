@@ -15,5 +15,38 @@ Note: Assume we are dealing with an environment that could only store integers w
  * @return {number}
  */
 const divide = function(dividend, divisor) {
+  if (dividend === 0) {
+    return 0
+  }
+  if (divisor === 1) {
+    return dividend
+  }
+  if (divisor === -1) {
+    return 0 - dividend
+  }
+  let lilNum = Math.abs(divisor)
+  let bigNum = Math.abs(dividend)
+  let quotient = 1
+  let sum = 0
+  const isPositive = () => {
+    if ((dividend < 0 && divisor > 0) || (dividend > 0 && divisor < 0)) {
+      return false
+    }
+    return true
+  }
+
+  while (sum + lilNum < bigNum) {
+    sum += lilNum
+    quotient ++
+  }
+
+  quotient = isPositive() ? quotient : 0 - quotient
+
+  return quotient
   
 };
+
+console.log(divide(7,2))
+console.log(divide(-7,2))
+console.log(divide(7,-2))
+
