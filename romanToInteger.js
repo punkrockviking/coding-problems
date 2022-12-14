@@ -41,3 +41,7 @@ var romanToInt = function(s) {
     }
     return number
 };
+
+// runtime beats 84%
+// memory beats 37%
+console.log(romanToInt("III"))
