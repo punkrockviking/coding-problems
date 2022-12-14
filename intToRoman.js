@@ -23,5 +23,64 @@
  * @return {string}
  */
 const intToRoman = function(num) {
-  
+  // count down
+  // subtract an ammount for each letter you add
+  let romanNum = ''
+  let intNum = num
+
+  while (intNum >= 1000) {
+    intNum -= 1000
+    romanNum += 'M'
+  }
+  if (intNum >= 900) {
+    intNum -= 900
+    romanNum += 'CM'
+  }
+  if (intNum >= 500) {
+    intNum -= 500
+    romanNum += 'D'
+  }
+  if (intNum >= 400) {
+    intNum -= 400
+    romanNum += 'CD'
+  }
+  while (intNum >= 100) {
+    intNum -= 100
+    romanNum += 'C'
+  }
+  if (intNum >= 90) {
+    intNum -= 90
+    romanNum += 'XC'
+  }
+  if (intNum >= 50) {
+    intNum -= 50
+    romanNum += 'L'
+  }
+  if (intNum >= 40) {
+    intNum -= 40
+    romanNum += 'XL'
+  }
+  while (intNum >= 10) {
+    intNum -= 10
+    romanNum += 'X'
+  }
+  if (intNum >= 9) {
+    intNum -= 9
+    romanNum += 'IX'
+  }
+  if (intNum >= 5) {
+    intNum -= 5
+    romanNum += 'V'
+  }
+  if (intNum >= 4) {
+    intNum -= 4
+    romanNum += 'IV'
+  }
+  while (intNum >= 1) {
+    intNum -= 1
+    romanNum += 'I'
+  }
+
+  return romanNum
 };
+
