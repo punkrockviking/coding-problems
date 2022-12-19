@@ -16,7 +16,7 @@ snail(array) #=> [1,2,3,4,5,6,7,8,9]
 
 */
 
-snail = function(array) {
+snail = function(nums) {
   // horz vs vert
   // horz right on arr[0] loop through entire arr
   // vert down on last element of all arrs
@@ -24,10 +24,23 @@ snail = function(array) {
   // vert up on first element until arr[1]
   // repeat pattern with horz right
 
-  const horz = (arr, start, end) => {
-    for (let i = arr[start]; i <= arr[end], i++) {
-      
+  const snailArr = []
+  
+  const horz = (arr, start, end, direction) => {
+    if (direction === 'right') {
+        for (let i = arr[start]; i <= arr[end], i++) {
+        snailArr.push(nums[i])
+      }
     }
+    if (direction === 'left') {
+      for (let i = arr[start]; i <= arr[end], i++) {
+        snailArr.push(nums[i])
+      }  
+    }
+  }
+
+  const vert = () => {
+    
   }
 
 }
