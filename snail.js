@@ -25,32 +25,30 @@ snail = function(nums) {
   // repeat pattern with horz right
 
   const snailArr = []
-  
-  const horz = (arr, start, end, constant, direction) => {
+
+  const horz = (arr, start, end, constant, isRight) => {
     // arr[constant][loop]
-    if (direction === 'right') {
-        for (let i = start; i <= end, i++) {
+    if (isRight) {
+      for (let i = start; i <= end, i++) {
         snailArr.push(nums[constant][i])
       }
-    }
-    if (direction === 'left') {
+    } else {
       for (let i = end; i >= start, i--) {
         snailArr.push(nums[constant][i])
-      }  
+      }
     }
     return snailArr
   }
 
-  const vert = (arr, start, end, constant, direction) => {
+  const vert = (arr, start, end, constant, isDown) => {
     // arr[loop][constant]
-    if (direction === 'down') {
+    if (isDown) {
       for (let i = start; i <= end; i++) {
         snailArr.push(nums[i][constant])
       }
-    }
-    if (direction === 'up') {
+    } else {
       for (let i = end; i >= start; i--) {
-        snailArr.push(nums[i][constant])        
+        snailArr.push(nums[i][constant])
       }
     }
     return snailArr
