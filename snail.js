@@ -26,21 +26,34 @@ snail = function(nums) {
 
   const snailArr = []
   
-  const horz = (arr, start, end, direction) => {
+  const horz = (arr, start, end, constant, direction) => {
+    // arr[constant][loop]
     if (direction === 'right') {
-        for (let i = arr[start]; i <= arr[end], i++) {
-        snailArr.push(nums[i])
+        for (let i = start; i <= end, i++) {
+        snailArr.push(nums[constant][i])
       }
     }
     if (direction === 'left') {
-      for (let i = arr[start]; i <= arr[end], i++) {
-        snailArr.push(nums[i])
+      for (let i = end; i >= start, i--) {
+        snailArr.push(nums[constant][i])
       }  
     }
+    return snailArr
   }
 
-  const vert = () => {
-    
+  const vert = (arr, start, end, constant, direction) => {
+    // arr[loop][constant]
+    if (direction === 'down') {
+      for (let i = start; i <= end; i++) {
+        snailArr.push(nums[i][constant])
+      }
+    }
+    if (direction === 'up') {
+      for (let i = end; i >= start; i--) {
+        snailArr.push(nums[i][constant])        
+      }
+    }
+    return snailArr
   }
 
 }
