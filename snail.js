@@ -54,4 +54,6 @@ snail = function(nums) {
     return snailArr
   }
 
+  // flags/variables to track which row, col, horz direction, vert direction will be input into method calls
+  // alternatively use Set for row and Set for col to track which ones have been navigated
 }
