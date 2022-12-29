@@ -25,6 +25,8 @@ snail = function(nums) {
   // repeat pattern with horz right
 
   const snailArr = []
+  const rowSet = new Set()
+  const colSet = new Set()
 
   const horz = (arr, start, end, constant, isRight) => {
     // arr[constant][loop]
