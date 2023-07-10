@@ -29,20 +29,44 @@ Constraints:
  * @param {number[]} nums
  * @return {boolean}
  */
+// const containsDuplicate = function(nums) {
+//   let hasDup = false
+//   const numSet = new Set()
+//     for (let i = 0; i < nums.length; i++){
+//       if (numSet.has(nums[i])) {
+//         hasDup = true
+//       } 
+//       numSet.add(nums[i])
+//       console.log(numSet)
+//     }
+//   return hasDup
+// };
+
 const containsDuplicate = function(nums) {
-  let hasDup = false
-  const numSet = new Set()
-    for (let i = 0; i < nums.length; i++){
-      if (numSet.has(nums[i])) {
-        hasDup = true
-      } 
-      numSet.add(nums[i])
-      console.log(numSet)
+  if (nums.length < 2) {
+    return false
+  }
+  if (nums.length === 2) {
+    return nums[0] === nums[1]
+  }
+  const sortedNums = nums.sort()
+  console.log(sortedNums)
+  for (let i = 1; i < nums.length - 1; i++) {
+    if (sortedNums[i] === sortedNums[i-1] || sortedNums[i] === sortedNums[i+1]) {
+      return true
     }
-  return hasDup
+  }
+  return false
 };
 
-console.log(containsDuplicate([1,2,3,4,9,7,5,8,5,0]))
+console.log(containsDuplicate([3,5,6,778,99,5]))
 console.log(containsDuplicate([1,1]))
-console.log(containsDuplicate([1,2,3,4,5,7]))
+console.log(containsDuplicate([7,2,4,6,1,5]))
+console.log(containsDuplicate([7]))
+console.log(containsDuplicate([]))
+console.log(containsDuplicate([2,14,18,22,22]))
+
+
+
+
 
