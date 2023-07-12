@@ -26,9 +26,36 @@ Constraints:
 0 <= prices[i] <= 104
 */
 
-const maxProfit = function(prices) {
-  // iterate through
-  // track lowestPrice
-  // track highestPrice after lowest price
-  // return profit
+// tracking low price, high price, and profit
+// const maxProfit = function(prices) {
+//   let lowestPrice = Infinity
+//   let highestPrice = -Infinity
+//   let curMaxProfit = 0
+//     // iterate through
+//   for (let i = 0; i < prices.length; i++) {
+//     let curPrice = prices[i]
+//     // track lowestPrice
+//     lowestPrice = Math.min(lowestPrice, curPrice)
+//     // track highestPrice after lowest price
+//     highestPrice = Math.max(highestPrice, curPrice)
+//     curMaxProfit = Math.max(curMaxProfit, highestPrice - lowestPrice)
+//   }
+//     // return profit
+//   return curMaxProfit
+// };
+
+// only tracking low price and profit
+var maxProfit = function(prices) {
+    let minBuyPrice = prices[0]
+    let maxProf = 0
+
+    for (let i = 1; i < prices.length; i++) {
+        const sellPrice = prices[i]
+        maxProf = Math.max(maxProf, sellPrice - minBuyPrice)
+        minBuyPrice = Math.min(minBuyPrice, prices[i])
+    }
+
+    return maxProf
 };
+
+console.log(maxProfit([7,6,4,3,1]))
