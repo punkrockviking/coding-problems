@@ -1,5 +1,5 @@
 /*
-Given the root of a binary tree, return the preorder traversal of its nodes' values.
+Given the root of a binary tree, return the postorder traversal of its nodes' values.
 
 Example 1:
 
@@ -54,20 +54,19 @@ const node1 = new Node(1, null, node2)
     3
 */
 
-const preorderTraversalRecursive = function(root) {
+const postorderTraversalRecursive = function(root) {
   const output = []
   const traverse = function(node) {
     if (node === null) {
       return
     }
-    output.push(node.val)
-    // console.log(output)
     traverse(node.left)
     traverse(node.right)
+    output.push(node.val)
     return
   }
   traverse(root)
   return output
 }
 
-console.log(preorderTraversalRecursive(node1))
+console.log(postorderTraversalRecursive(node1))
