@@ -3,16 +3,20 @@
 // (In this case, all triangles must have surface greater than 0 to be accepted).
 
 function isTriangle(a,b,c) {
-    if ((a + b > c) && (b + c > a) && (c + a > b)) {
-      return true
-    } else {
-    return false;
-    }
-  }
+    // if ((a + b > c) && (b + c > a) && (c + a > b)) {
+    //   return true
+    // } else {
+    // return false;
+    // }
+  return ((a + b > c) && (b + c > a) && (c + a > b))
+}
 
+console.log(isTriangle(1,2,2))
+console.log(isTriangle(7,2,2))
+  
 
-  //Test Cases
-  Test.describe("PublicTest", function() {
-    Test.assertEquals(isTriangle(1,2,2), true);
-    Test.assertEquals(isTriangle(7,2,2), false);
-});
+// //Test Cases
+// Test.describe("PublicTest", function() {
+//   Test.assertEquals(isTriangle(1,2,2), true);
+//   Test.assertEquals(isTriangle(7,2,2), false);
+// });
