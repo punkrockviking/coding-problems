@@ -28,3 +28,38 @@ const majorityElement = function(nums) {
 };
 
 console.log(majorityElement([1,2,5,2]))
+
+const majorityElementTest = (nums) => {
+  // sort nums
+  // track max repeats
+  // track max repeated value (stack or single value)
+  // track cur repeats
+  // if repeat +1
+  // if new num reset and count again
+
+  nums = nums.sort()
+  let maxRep = 0
+  let maxRepNum = nums[0]
+  let curNum = nums[0]
+  let curRep = 0
+
+  const isRep = (val, tar) => {
+    return val === tar
+  }
+  
+  for (let i = 1; i < nums.length; i++) {
+    if (isRep(nums[i], curNum)) {
+      curRep++
+      if (curRep > maxRep) {
+        maxRep = curRep
+        maxRepNum = curNum
+      }
+    } else {
+      curNum = nums[i]
+      curRep = 0
+    }
+  }
+  return maxRepNum
+}
+
+console.log(majorityElementTest([1,2,5,2]))
