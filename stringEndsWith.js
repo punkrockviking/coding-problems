@@ -14,6 +14,8 @@ function solution(str, ending){
     return true  
   }
 
+//alternatively you could just start at the end of the ending str, then work back. if you get through entire ending str then return true
+
 
   Test.assertEquals(solution('abcde', 'cde'), true)
 Test.assertEquals(solution('abcde', 'abc'), false)

@@ -22,10 +22,41 @@ function isValidWalk(walk) {
     return ((vert === 0) && (horiz === 0))
   }
 
+function isValidWalkSwitch(walk) {
+    let vert = 0
+    let horiz = 0
+    if (walk.length !== 10) {
+      return false
+    }
+    for (i = 0; i < walk.length; i++) {
+      switch (walk[i]) {
+        case 'n':
+          vert++;
+        case 's':
+          vert--;
+        case 'w':
+          horiz--;
+        case 'e':
+          horiz++;
+      }
+      console.log('vert is ', vert)
+      console.log('horiz is ', horiz)
+    }
+    return ((vert === 0) && (horiz === 0))
+  }
 
   //TESTS
 
-  Test.expect(isValidWalk(['n','s','n','s','n','s','n','s','n','s']), 'should return true');
-Test.expect(!isValidWalk(['w','e','w','e','w','e','w','e','w','e','w','e']), 'should return false');
-Test.expect(!isValidWalk(['w']), 'should return false');
-Test.expect(!isValidWalk(['n','n','n','s','n','s','n','s','n','s']), 'should return false');
+console.log(isValidWalk(['n','s','n','s','n','s','n','s','n','s']))
+console.log(isValidWalk(['w','e','w','e','w','e','w','e','w','e','w','e']))
+console.log(isValidWalk(['w']))
+console.log(isValidWalk(['n','n','n','s','n','s','n','s','n','s']))
+
+console.log('----------------------')
+
+console.log(isValidWalkSwitch(['n','s','n','s','n','s','n','s','n','s']))
+console.log(isValidWalkSwitch(['w','e','w','e','w','e','w','e','w','e','w','e']))
+console.log(isValidWalkSwitch(['w']))
+console.log(isValidWalkSwitch(['w','w','w','e','w','e','w','e','w','e']))
+
+// switch case statement not working properly

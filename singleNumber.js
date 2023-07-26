@@ -49,6 +49,12 @@ var singleNumber = function(nums) {
     }
     return stack[0]
   };
+
+// alternate solution using linear runtime complexity.
+// iterate through entire array once
+// add new values to a set
+// if value is already in set, delete it from set
+// at the end, return the single value left in set
   
   // singleNumber([2,2,1])
   // singleNumber([4,1,2,1,2])

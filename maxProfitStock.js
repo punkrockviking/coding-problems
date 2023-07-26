@@ -9,7 +9,7 @@ var maxProfit = function(prices) {
     for (let i = 1; i < prices.length; i++) {
         const sellPrice = prices[i]
         maxProf = Math.max(maxProf, sellPrice - minBuyPrice)
-        minBuyPrice = Math.min(minBuyPrice, prices[i])
+        minBuyPrice = Math.min(minBuyPrice, sellPrice)
     }
 
     return maxProf

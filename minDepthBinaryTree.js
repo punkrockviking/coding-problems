@@ -29,7 +29,7 @@ class Node {
 }
 
 const traverse = function(node, depthArr, depth=1) {
-  console.log('*************************************************')
+  // console.log('*************************************************')
   let currDepth = depth 
   if (!node) {
     return

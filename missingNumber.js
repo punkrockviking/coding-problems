@@ -36,20 +36,20 @@ All the numbers of nums are unique.
 */
 
 var missingNumber = function(nums) {
-    nums.sort(function(a, b) {
-  return a - b;
-})
-    if (nums[0] !== 0) {
-        return 0
+  nums.sort(function(a, b) {
+    return a - b;
+  })
+  if (nums[0] !== 0) {
+    return 0
+  }
+  if (nums[nums.length - 1] !== nums.length) {
+      return nums.length
+  }
+  for (let i = 0; i < nums.length; i++) {
+    if (nums[i] + 1 !== nums[i+1]) {
+         return nums[i] + 1
     }
-    if (nums[nums.length - 1] !== nums.length) {
-        return nums.length
-    }
-    for (let i = 0; i < nums.length; i++) {
-        if (nums[i] + 1 !== nums[i+1]) {
-            return nums[i] + 1
-        }
-    }
+  }
 };
 
 missingNumber([3,0,1])
